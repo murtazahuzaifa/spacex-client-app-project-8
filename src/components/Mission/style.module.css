@@ -1,0 +1,39 @@
+.missionContainer{
+    /* width: 500px; */
+    box-sizing: border-box;
+    width: 300px
+    /* padding: 10px 10px; */
+    /* overflow: hidden; */
+
+}
+
+.launchListHeading{
+    padding: 5px;
+    height: 32px;
+    box-shadow: -12px 0px 10px black;
+    /* padding-right: 2px; */
+}
+
+.launchList{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 94vh;
+    overflow-y: auto;
+}
+.launchList  li{
+    font-size: large;
+    margin: 10px;
+    border-top: 1px solid brown;
+    box-sizing: border-box;
+}
+.launchList  li>div{
+    padding: 5px;
+}
+.launchList li>div:hover{
+    background-color: rgba(224, 226, 226, 0.5);
+    cursor: pointer;
+}
+.selected{
+    background-color: cadetblue;
+}

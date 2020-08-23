@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMissionsInfoQuery} from '../../generated/graphql';
 import {MissionList} from './MissionList';
+import style from './style.module.css'
 
 const MissionContainer:React.FC<{loadingFeedBack:()=>void}> = ({loadingFeedBack}) => {
 
@@ -17,7 +18,7 @@ const MissionContainer:React.FC<{loadingFeedBack:()=>void}> = ({loadingFeedBack}
         return <div>Error</div>
 
     return(
-        <div>
+        <div className={`${style.missionContainer}`}>
             <MissionList data={data}/>
         </div>
     )

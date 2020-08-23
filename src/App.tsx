@@ -3,22 +3,27 @@ import style from './App.module.css';
 import MissionContainer from './components/Mission';
 import MissionInfoContainer from './components/Missioninfo';
 import LoadingPage from './components/LoadingPage';
+import {GlobalProvider} from './GlobalProvider/GlobalProvider';
 
 function App() {
 
   const missionContainerloading = useState(true);
-  const missionContainerFeedBack = ()=>{missionContainerloading[1](false)}
+  const missionInfoContainerloading = useState(true);
+  const missionContainerFeedBack = () => { missionContainerloading[1](false) }
+  const missionInfoContainerFeedBack = () => { missionInfoContainerloading[1](false) }
 
   return (
-    <div className={`${style.App}`}>
-      {!missionContainerloading[0] || <LoadingPage /> }
-      <div className={`${style.leftPane}`}>
-        <MissionContainer loadingFeedBack={missionContainerFeedBack} />
+    <GlobalProvider>
+      <div className={`${style.App}`}>
+        {(!missionContainerloading[0] && !missionInfoContainerloading[0]) || <LoadingPage />}
+        <div className={`${style.leftPane}`}>
+          <MissionContainer loadingFeedBack={missionContainerFeedBack} />
+        </div>
+        <div className={`${style.rightPane}`}>
+          <MissionInfoContainer loadingFeedBack={missionInfoContainerFeedBack} />
+        </div>
       </div>
-      <div className={`${style.rightPane}`}>
-        <MissionInfoContainer id={114} />
-      </div>
-    </div>
+    </GlobalProvider>
   );
 }
 
