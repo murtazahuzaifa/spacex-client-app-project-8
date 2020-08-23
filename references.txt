@@ -1,0 +1,13 @@
+npm install graphql graphql-tag @apollo/client
+
+npm install -D @graphql-codegen/cli
+
+npm install -D @graphql-codegen/typescript-operations
+
+https://api.spacex.land/graphql/
+
+https://spacexdata.herokuapp.com/graphql
+./src/component/**/*.{ts.tsx}
+
+graphql-codegen init
+codegen

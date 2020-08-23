@@ -1,0 +1,17 @@
+.App {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.rightPane{
+  overflow-y: auto;
+
+}
+
+.leftPane{
+  overflow-y: auto;
+
+}
