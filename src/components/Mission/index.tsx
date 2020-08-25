@@ -3,12 +3,15 @@ import { useMissionsInfoQuery} from '../../generated/graphql';
 import {MissionList} from './MissionList';
 import style from './style.module.css'
 
-const MissionContainer:React.FC<{loadingFeedBack:()=>void}> = ({loadingFeedBack}) => {
+const MissionContainer:React.FC<{loadingFeedBack?:()=>void}> = ({loadingFeedBack}) => {
 
     const {data, error, loading} = useMissionsInfoQuery();
     // const [isLoading, setIsLoading ] = useState<boolean>(loading);
     useEffect(()=>{
-        if (!loading) loadingFeedBack()
+        if(loadingFeedBack){
+            if (!loading) loadingFeedBack()
+        }
+        
     })
 
     if (loading)

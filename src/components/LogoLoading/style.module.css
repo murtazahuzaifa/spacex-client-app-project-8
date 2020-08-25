@@ -1,0 +1,32 @@
+.LoadingPageContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoSVG{
+    margin: 20px 20px 20px 100px;
+    width: 600px;
+    height: 300px;
+}
+.curveBar{
+    fill: #C6C2C2;
+    animation: curbarAnimation 2s ease-in infinite ;
+}
+.slashBar{
+    fill: whitesmoke;
+    animation: curbarAnimation 2s ease-in infinite reverse ;
+}
+
+@keyframes curbarAnimation {
+    0% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+}

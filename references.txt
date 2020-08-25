@@ -11,3 +11,6 @@ https://spacexdata.herokuapp.com/graphql
 
 graphql-codegen init
 codegen
+
+
+svg masking example: https://bennettfeely.com/clippy/

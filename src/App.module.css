@@ -1,14 +1,30 @@
 .App {
-  /* height: 100vh; */
+  height: 100vh;
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: row;
 }
 
+.loading{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000; 
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://www.startalkradio.net/wp-content/uploads/2019/09/HubbleLegacyFieldCrop_Credit_NASA_ESA_1400x975-1400x975.jpg");
+    background-position: center;
+    background-size: cover; 
+}
+
 .rightPane{
   /* overflow-y: auto; */
+  height: 100%;
   width: 100%;
+  box-sizing: border-box;
 
 }
 
@@ -16,5 +32,15 @@
   /* overflow-y: hidden; */
   height: 100%;
   border-right: 2px solid brown;
+}
 
+@media only screen and (max-width: 1080px){
+  .leftPane{
+    display: none;
+  }
+}
+@media only screen and (max-width: 420px){
+  .leftPane{
+    display: none;
+  }
 }

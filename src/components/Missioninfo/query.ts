@@ -4,6 +4,7 @@ export const LauncheMissionInfo = gql`
   query LauncheMissionInfo($id: String!) {
     launch(id: $id) {
       mission_name
+      flight_number
       launch_year
       launch_success
       details

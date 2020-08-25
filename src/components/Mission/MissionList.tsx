@@ -11,7 +11,6 @@ export const MissionList: React.FC<Props> = ({ data }) => {
     // const [selectedMission, setSelectedMission] = useState(144);
     const {missionNo, SetMissionNo} = useContext(GlobalContext);
 
-    console.log(missionNo)
     return (
         <div>
             <h2 className={`${style.launchListHeading}`} >Launches</h2>

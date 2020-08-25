@@ -1,0 +1,64 @@
+.navBar{
+    height: 40px;
+    width: 100%;
+    background-color: rgb(70, 68, 68);
+    box-shadow: 0 5px 20px grey;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navBar>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.hamburger{
+    height: 50px;
+    width: 40px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.hamburger>span{
+    height: 3px;
+    margin: 2px;
+    background-color: whitesmoke;
+}
+
+.logo{
+    margin: auto;
+    width: 250px;
+}
+
+.leftPane{
+    position: fixed;
+    left: 0;
+    top: 0;
+    /* transform: translate(-100px,0); */
+    height: 100vh;
+    /* width: 500px; */
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+@keyframes animateLeftPane {
+    
+}
+
+@media only screen and (min-width: 1080px){
+    .hamburger{ display: none; }
+    .leftPane{visibility: hidden;}
+}
+@media only screen and (max-width: 420px){
+    .hamburger{
+        height: 30px;
+        width: 35px;
+    }
+    .logo{
+        width: 150px;
+    }
+  }
