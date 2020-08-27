@@ -18,7 +18,7 @@ const MissionContainer:React.FC<{loadingFeedBack?:()=>void}> = ({loadingFeedBack
         return <div>Loading</div>
 
     if(error || !data)
-        return <div>Error</div>
+        return <h1>Error</h1>
 
     return(
         <div className={`${style.missionContainer}`}>

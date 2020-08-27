@@ -15,9 +15,10 @@
     /* flex-direction: column; */
     align-items: center;
     justify-content: center;
-    background-image: url("https://www.startalkradio.net/wp-content/uploads/2019/09/HubbleLegacyFieldCrop_Credit_NASA_ESA_1400x975-1400x975.jpg");
+    background-color: black;
+    /* background-image: url("https://www.startalkradio.net/wp-content/uploads/2019/09/HubbleLegacyFieldCrop_Credit_NASA_ESA_1400x975-1400x975.jpg");
     background-position: center;
-    background-size: cover; 
+    background-size: cover;  */
 }
 
 .rightPane{
@@ -34,13 +35,38 @@
   border-right: 2px solid brown;
 }
 
-@media only screen and (max-width: 1080px){
+.leftPaneDrawerOpen{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.leftPaneDrawerClose{
+  display: none;
+}
+
+/* @keyframes AnimateLeftPane{
+  0%{
+    transform: translateX();
+  }
+} */
+/* @media only screen and (max-width: 1080px){
+  .leftPane{
+    position: fixed;
+    left: 0;
+    top: 0;
+    /* transform: translate(-100px,0); */
+    /* height: 100vh; */
+    /* width: 500px; */
+    /* overflow-y: auto; */
+    /* background-color: rgba(0,0,0,0.5); */
+  /* } */
+/* } */
+/* @media only screen and (max-width: 1080px){
   .leftPane{
     display: none;
-  }
-}
-@media only screen and (max-width: 420px){
-  .leftPane{
-    display: none;
-  }
-}
+  }} */

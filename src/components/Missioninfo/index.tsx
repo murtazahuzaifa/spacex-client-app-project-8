@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import NavBar from '../NavBar';
 import { useLauncheMissionInfoQuery } from '../../generated/graphql';
-import { GlobalContext } from '../../GlobalProvider/GlobalProvider';
+import { GlobalContext } from '../../GlobalProviders/GlobalProvider';
 import style from './style.module.css'
 import LogoLoading from '../LogoLoading';
 
 type Props = {
-    loadingFeedBack: () => void;
+    loadingFeedBack?: () => void;
 };
 
 const rocketImg = {
@@ -21,14 +21,16 @@ const MissionInfoContainer: React.FC<Props> = ({ loadingFeedBack }) => {
     const { data, error, loading } = useLauncheMissionInfoQuery({ variables: { id: `${missionNo}` } });
 
     useEffect(() => {
-        if (!loading) loadingFeedBack()
+        if(loadingFeedBack){
+            if (!loading) loadingFeedBack()
+        }
     })
 
     if (loading)
         return <div> <NavBar /> <LogoLoading/> </div>
 
     if (error || !data)
-        return <div> <NavBar /> <span>Error</span> </div>
+        return <div> <NavBar />  <h1>Error</h1> </div>
 
     let rocketName = data.launch?.rocket?.rocket_name;
     const rocketImgLink = rocketName === "Falcon 1" ? rocketImg["Falcon 1"] : rocketName === "Falcon 9" ? rocketImg["Falcon 9"] : rocketName === "Falcon Heavy" ? rocketImg["Falcon Heavy"] : rocketImg["noImage"]

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import MissionContainer from '../Mission';
 import style from './style.module.css'
+import {GlobalContext} from '../../GlobalProviders/GlobalProvider';
 
 const Header = () => {
 
-    const [leftPaneOpen, setLeftPaneOpen] = useState<boolean>(false);
+    const {leftPaneOpen, setLeftPaneOpen} = useContext(GlobalContext);
 
     return (
         <div className={`${style.navBar}`}>
@@ -21,9 +22,9 @@ const Header = () => {
 
             <div className={`${style.navRight}`}> </div>
 
-            <div className={`${style.leftPane}`} style={{visibility: leftPaneOpen?"visible":"hidden"}} onClick={()=>{setLeftPaneOpen(!leftPaneOpen)}} >
+            {/* <div className={`${style.leftPane}`} style={{visibility: leftPaneOpen?"visible":"hidden"}} onClick={()=>{setLeftPaneOpen(!leftPaneOpen)}} >
                 <MissionContainer />
-            </div>
+            </div> */}
         </div>
     )
 }

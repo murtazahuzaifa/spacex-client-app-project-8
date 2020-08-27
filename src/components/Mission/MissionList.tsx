@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { MissionsInfoQuery } from '../../generated/graphql';
 import style from './style.module.css'
-import {GlobalContext} from '../../GlobalProvider/GlobalProvider';
+import {GlobalContext} from '../../GlobalProviders/GlobalProvider';
 
 interface Props {
     data: MissionsInfoQuery

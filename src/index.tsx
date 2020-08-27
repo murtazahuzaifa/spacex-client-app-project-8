@@ -3,25 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import { ApolloClient, InMemoryCache } from '@apollo/client';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
-
-const client = new ApolloClient({
-  uri: "https://spacexdata.herokuapp.com/graphql",
-  // cache: new InMemoryCache(),
-});
+import { GlobalProvider } from './GlobalProviders/GlobalProvider';
+import ApolloClientProvider from './GlobalProviders/ApolloClientProvider';
 
 ReactDOM.render(
-  // <React.StrictMode>
-    <ApolloProvider client={client}>
-    <ApolloHooksProvider client={client}>
-    <App />    
-    </ApolloHooksProvider>
-    </ApolloProvider>
-  // </React.StrictMode>
-  ,document.getElementById('root')
+  <ApolloClientProvider>
+      <GlobalProvider>
+        <App />
+      </GlobalProvider>
+    </ApolloClientProvider>
+  , document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
