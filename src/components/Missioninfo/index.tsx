@@ -35,11 +35,11 @@ const MissionInfoContainer: React.FC<Props> = ({ loadingFeedBack }) => {
     let rocketName = data.launch?.rocket?.rocket_name;
     const rocketImgLink = rocketName === "Falcon 1" ? rocketImg["Falcon 1"] : rocketName === "Falcon 9" ? rocketImg["Falcon 9"] : rocketName === "Falcon Heavy" ? rocketImg["Falcon Heavy"] : rocketImg["noImage"]
     return (
-        <>
+        <div>
             <NavBar />
             <div className={`${style.missionInfoContainer}`}>
                 <br/>
-                <h1>Mission: {data.launch?.mission_name}</h1>
+                <h1 >Mission: {data.launch?.mission_name}</h1>
                 <br />
                 <div><b>Launch year:</b> {data.launch?.launch_year}</div>
                 <div><b>Flight-{data.launch?.flight_number}:</b> {data.launch?.launch_success ? <span style={{ color: 'green' }}>Succeed</span> : <span style={{ color: 'red' }}>Failed</span>}</div>
@@ -55,7 +55,7 @@ const MissionInfoContainer: React.FC<Props> = ({ loadingFeedBack }) => {
                 </div>
 
             </div>
-        </>
+        </div>
     )
 }
 

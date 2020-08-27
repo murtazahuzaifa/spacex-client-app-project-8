@@ -24,8 +24,7 @@ const App = ()=>{
       }else{
         setWindowIs1080(false);
       }
-    }
-    )}
+    })}
 
   useEffect(()=>{
     windowIs1080CallBack()

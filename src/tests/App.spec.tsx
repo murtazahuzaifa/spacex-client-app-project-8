@@ -8,19 +8,12 @@ import { act } from 'react-dom/test-utils';
 import ApolloClientProvider from '../GlobalProviders/ApolloClientProvider';
 import {GlobalProvider} from '../GlobalProviders/GlobalProvider';
 
-// import {useMissionsInfoQuery, useLauncheMissionInfoQuery, MissionsInfoQuery, LauncheMissionInfoQuery } from '../generated/graphql';
-// missionInfoContainerFeedBack as jest.Mock
 describe('Render App', () => {
  
   // let AppWrapper:any;
   // beforeEach(()=>{
   // AppWrapper = mount(<App/>);
   // });
-  // const missionInfo:MissionsInfoQuery = {launches:[{flight_number: 1, "mission_name": "FalconSat", "launch_year": 2006}, {flight_number: 2, "mission_name": "DemoSat", "launch_year": 2007 }]}
-  // const launchInfo: LauncheMissionInfoQuery = {"launch":{mission_name:"FalconSat",flight_number:1,launch_year:2006,launch_success:false,details:"Engine failure at 33 seconds and loss of vehicle",launch_site:{"site_name":"Kwajalein Atoll","__typename":"LaunchSite"},"rocket":{"rocket_name":"Falcon 1","rocket_type":"Merlin A","__typename":"LaunchRocket"},"links":{"flickr_images":[],"__typename":"LaunchLinks"},"__typename":"Launch"}}
-  // jest.mock('../generated/graphql');
-  // const mockMissionQuery = useMissionsInfoQuery as jest.Mock;
-  // const mockLaunchQuery = useLauncheMissionInfoQuery as jest.Mock;
 
   it('Mission, MissionInfo and logoloading should be there', () => {
     const AppWrapper: ReactWrapper = mount(<ApolloClientProvider><GlobalProvider><App /></GlobalProvider></ApolloClientProvider>);
@@ -47,15 +40,5 @@ describe('Render App', () => {
     expect(AppWrapper.text()).toBe("Loading    ");
     
   });
-
-  // it('after loading data should be render',()=>{
-    // mockMissionQuery.mockReturnValue({ loading:false, error:false, data:missionInfo});
-    // mockLaunchQuery.mockReturnValue({loading:false, error:false, data:launchInfo});
-    // mockMissionQuery(); mockLaunchQuery()
-    // const AppWrapper: ReactWrapper = mount(<App />);
-    // AppWrapper.update()
-    // console.log(AppWrapper.text());
-    // console.log(AppWrapper.text());
-  // })
 
 })

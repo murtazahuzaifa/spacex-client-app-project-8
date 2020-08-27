@@ -7,9 +7,13 @@ interface Props {
     data: MissionsInfoQuery
 }
 
+export let missionNo:number, SetMissionNo:(val:number)=>void
+export let util = {SetMissionNo:(id:number) => {SetMissionNo( id+1 ) } }
+
 export const MissionList: React.FC<Props> = ({ data }) => {
     // const [selectedMission, setSelectedMission] = useState(144);
-    const {missionNo, SetMissionNo} = useContext(GlobalContext);
+    missionNo = useContext(GlobalContext).missionNo;
+    SetMissionNo = useContext(GlobalContext).SetMissionNo;
 
     return (
         <div>
@@ -20,7 +24,7 @@ export const MissionList: React.FC<Props> = ({ data }) => {
                         <li
                             key={ (id+1) }
                             className={missionNo === (id+1)  ? style.selected : ""}
-                            onClick={() => { SetMissionNo( (id+1) ) }}
+                            onClick={() => { util.SetMissionNo( id ) }}
                         >
                             <div>{launchObj?.mission_name}({launchObj?.launch_year})</div>
                         </li>
