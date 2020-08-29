@@ -1,3 +1,14 @@
+export default () => {
+  if('serviceWorker' in navigator){
+    const swUrl = `${process.env.PUBLIC_URL}/serviceWorker.js`
+    navigator.serviceWorker.register(swUrl).then((result)=>{
+      console.log("RESULT: => ",result);
+    }).catch(error=>{
+      console.log("ERROR: => ",error);
+    })
+  }
+}
+/* 
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
@@ -147,3 +158,4 @@ export function unregister() {
       });
   }
 }
+*/

@@ -8,7 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: black; */
+  background-color: black;
   background-image: url("https://www.startalkradio.net/wp-content/uploads/2019/09/HubbleLegacyFieldCrop_Credit_NASA_ESA_1400x975-1400x975.jpg");
   background-position: center;
   background-size: cover; 

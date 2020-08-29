@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import NavBar from '../NavBar';
-import { useLauncheMissionInfoQuery } from '../../generated/graphql';
+import { useLauncheMissionInfoQuery, LauncheMissionInfoQuery } from '../../generated/graphql';
 import { GlobalContext } from '../../GlobalProviders/GlobalProvider';
 import style from './style.module.css'
 import LogoLoading from '../LogoLoading';
@@ -19,44 +19,61 @@ const rocketImg = {
 const MissionInfoContainer: React.FC<Props> = ({ loadingFeedBack }) => {
     const { missionNo } = useContext(GlobalContext);
     const { data, error, loading } = useLauncheMissionInfoQuery({ variables: { id: `${missionNo}` } });
+    const [fetchData, SetFetchData] = useState<LauncheMissionInfoQuery>();
+
+    const afterLoadingCallback = () => {
+        SetFetchData(data)
+        if (!loading) {
+            if (data) {
+                localStorage.setItem(`missionNo${missionNo}`, JSON.stringify(data));
+            }
+            else if (error) {
+                const localData = localStorage.getItem(`missionNo${missionNo}`);
+                if (!data && localData) {
+                    SetFetchData(JSON.parse(localData));
+                }
+            }
+        }}
 
     useEffect(() => {
         if(loadingFeedBack){
             if (!loading) loadingFeedBack()
         }
     })
+    useEffect( afterLoadingCallback, [loading, missionNo])
 
     if (loading)
         return <div> <NavBar /> <LogoLoading/> </div>
 
-    if (error || !data)
-        return <div> <NavBar />  <h1>Error</h1> </div>
-
-    let rocketName = data.launch?.rocket?.rocket_name;
+    // console.log('fetch data', fetchData, 'mission no', missionNo, ' data', data,' loading', loading );
+    if (fetchData){
+        let rocketName = fetchData.launch?.rocket?.rocket_name;
     const rocketImgLink = rocketName === "Falcon 1" ? rocketImg["Falcon 1"] : rocketName === "Falcon 9" ? rocketImg["Falcon 9"] : rocketName === "Falcon Heavy" ? rocketImg["Falcon Heavy"] : rocketImg["noImage"]
     return (
         <div>
             <NavBar />
             <div className={`${style.missionInfoContainer}`}>
                 <br/>
-                <h1 >Mission: {data.launch?.mission_name}</h1>
+                <h1 >Mission: {fetchData.launch?.mission_name}</h1>
                 <br />
-                <div><b>Launch year:</b> {data.launch?.launch_year}</div>
-                <div><b>Flight-{data.launch?.flight_number}:</b> {data.launch?.launch_success ? <span style={{ color: 'green' }}>Succeed</span> : <span style={{ color: 'red' }}>Failed</span>}</div>
-                <div><b>Rocket:</b> {rocketName} <i>({data.launch?.rocket?.rocket_type})</i></div>
+                <div><b>Launch year:</b> {fetchData.launch?.launch_year}</div>
+                <div><b>Flight-{fetchData.launch?.flight_number}:</b> {fetchData.launch?.launch_success ? <span style={{ color: 'green' }}>Succeed</span> : <span style={{ color: 'red' }}>Failed</span>}</div>
+                <div><b>Rocket:</b> {rocketName} <i>({fetchData.launch?.rocket?.rocket_type})</i></div>
                 <br />
-                <div className={`${style.missionDetails}`}> <h3>Details:</h3> <p>{data.launch?.details}</p> </div>
+                <div className={`${style.missionDetails}`}> <h3>Details:</h3> <p>{fetchData.launch?.details}</p> </div>
                 <div className={`${style.imageDiv}`} >
-                    {data.launch?.links?.flickr_images?.length === 0 ? // if there is an image list coming from the api
+                    {fetchData.launch?.links?.flickr_images?.length === 0 ? // if there is an image list coming from the api
                         (rocketName ? <img src={rocketImgLink} alt="rocket" /> : null) :
-                        data.launch?.links?.flickr_images?.map((imglink, id) =>
+                        fetchData.launch?.links?.flickr_images?.map((imglink, id) =>
                             imglink ? <img src={imglink} alt="rocket" key={id} /> : null)
                     }
                 </div>
 
             </div>
         </div>
-    )
+    )}
+        
+    return <div> <NavBar />  <h1>Error</h1> </div>
 }
 
 export default MissionInfoContainer
